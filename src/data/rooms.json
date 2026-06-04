@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "roomName": "Server Room",
+    "roomPath": "server-room",
+    "unsolvedInstruction": "A note labelled 'ACCESS CODE' is attached to a server rack, but the code itself appears to be missing. Something may be hidden from normal sight.",
+    "solvedInstruction": "Using the UV Light, you revealed a hidden access code written in invisible ink. The code has been added to your inventory.",
+    "hint": "Not everything can be seen with the naked eye.",
+    "unsolvedImage": "/images/rooms/server-room-unsolved.png",
+    "solvedImage": "/images/rooms/server-room-solved.png",
+    "itemToSolve": 1,
+    "itemToAdd": 2
+  },
+  {
+    "id": 2,
+    "roomName": "Security Room",
+    "roomPath": "security-room",
+    "unsolvedInstruction": "The security terminal is locked. It requests an access code before it will release any security credentials.",
+    "solvedInstruction": "The access code was accepted. A Security Keycard was released from the terminal.",
+    "hint": "Somewhere in the facility, a hidden code may grant access.",
+    "unsolvedImage": "/images/rooms/security-room-unsolved.png",
+    "solvedImage": "/images/rooms/security-room-solved.png",
+    "itemToSolve": 2,
+    "itemToAdd": 3
+  },
+  {
+    "id": 3,
+    "roomName": "Archives",
+    "roomPath": "archives",
+    "unsolvedInstruction": "Rows of encrypted archive files are locked behind a security scanner. Valuable information may be stored inside.",
+    "solvedInstruction": "The Security Keycard unlocked the archives. Inside an old maintenance report, you discovered a Maintenance Key.",
+    "hint": "Only authorized personnel can access historical records.",
+    "unsolvedImage": "/images/rooms/archives-unsolved.png",
+    "solvedImage": "/images/rooms/archives-solved.png",
+    "itemToSolve": 3,
+    "itemToAdd": 4
+  },
+  {
+    "id": 4,
+    "roomName": "Reactor Room",
+    "roomPath": "reactor-room",
+    "unsolvedInstruction": "The reactor controls are inaccessible. A locked maintenance panel blocks access to the emergency systems.",
+    "solvedInstruction": "Using the Maintenance Key, you opened the panel and recovered the facility's Admin Credentials.",
+    "hint": "Someone with maintenance access may have left a way inside.",
+    "unsolvedImage": "/images/rooms/reactor-room-unsolved.png",
+    "solvedImage": "/images/rooms/reactor-room-solved.png",
+    "itemToSolve": 4,
+    "itemToAdd": 5
+  },
+  {
+    "id": 5,
+    "roomName": "Vault",
+    "roomPath": "vault",
+    "unsolvedInstruction": "A heavily protected vault contains critical system controls. Administrator authorization is required.",
+    "solvedInstruction": "The Admin Credentials granted access to the vault. Inside you found the Master Override Key.",
+    "hint": "Only administrators are trusted with the facility's most important systems.",
+    "unsolvedImage": "/images/rooms/vault-unsolved.png",
+    "solvedImage": "/images/rooms/vault-solved.png",
+    "itemToSolve": 5,
+    "itemToAdd": 6
+  },
+  {
+    "id": 6,
+    "roomName": "Exit Node",
+    "roomPath": "exit-node",
+    "unsolvedInstruction": "The AI lockdown is still active. The exit remains sealed until the master override sequence is executed.",
+    "solvedInstruction": "You inserted the Master Override Key and disabled the lockdown. The exit gate opens and you escape Project NEXUS.",
+    "hint": "Somewhere in the facility there must be a way to override the AI's control.",
+    "unsolvedImage": "/images/rooms/exit-node-unsolved.png",
+    "solvedImage": "/images/rooms/exit-node-solved.png",
+    "itemToSolve": 6,
+    "itemToAdd": null
+  }
+]

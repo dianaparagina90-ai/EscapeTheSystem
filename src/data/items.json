@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "item": "UV Light",
+    "description": "A portable ultraviolet flashlight capable of revealing hidden markings.",
+    "image": "/images/items/uv-light.png"
+  },
+  {
+    "id": 2,
+    "item": "Access Code",
+    "description": "A hidden code discovered in the Server Room.",
+    "image": "/images/items/access-code.png"
+  },
+  {
+    "id": 3,
+    "item": "Security Keycard",
+    "description": "Provides access to restricted facility systems.",
+    "image": "/images/items/security-keycard.png"
+  },
+  {
+    "id": 4,
+    "item": "Maintenance Key",
+    "description": "Used to unlock service panels and maintenance equipment.",
+    "image": "/images/items/maintenance-key.png"
+  },
+  {
+    "id": 5,
+    "item": "Admin Credentials",
+    "description": "High-level administrator access credentials.",
+    "image": "/images/items/admin-credentials.png"
+  },
+  {
+    "id": 6,
+    "item": "Master Override Key",
+    "description": "The final key capable of disabling the AI lockdown.",
+    "image": "/images/items/master-override-key.png"
+  }
+]
