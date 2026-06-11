@@ -6,7 +6,7 @@ export interface IItem {
 }
 
 export interface IRoom {
-     id: number,
+    id: number,
     roomName: string,
     roomPath: string,
     unsolvedInstruction:string,
@@ -15,5 +15,5 @@ export interface IRoom {
     unsolvedImage: string,
     solvedImage: string,
     itemToSolve: number,
-    itemToAdd: number
+    itemToAdd: number | null
 }

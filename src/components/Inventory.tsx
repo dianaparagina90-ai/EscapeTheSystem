@@ -1,27 +1,37 @@
 import useInventory from "../hooks/useInventory";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import rooms from "../data/rooms.json";
 import type { IRoom } from "../types";
+
 const Inventory = () => {
   const { inventory, addItem } = useInventory();
   const location = useLocation();
+  //   const navigate = useNavigate();
 
   const checkIfCorrect = (id: number) => {
     const roomPath = location.pathname.split("/")[1];
-    const room = rooms.find((room) => room.roomPath === roomPath);
+    const room: IRoom | undefined = rooms.find(
+      (room) => room.roomPath === roomPath,
+    );
 
     if (!room) {
       return;
     }
 
     if (room.itemToSolve === id) {
-      addItem(room.itemToAdd);
+      const itemToAdd = room.itemToAdd;
+      if (typeof itemToAdd === "number") {
+        addItem(itemToAdd);
+      }
+      // // navigera vidare till victory när man trycker på sista bilden
+      // else if (room.itemToAdd === null) {
+      //   navigate("/victory");
+      // }
     }
   };
 
   return (
     <div>
-      //denna ger felmeddelande när man trycker på tidigare bild
       {inventory.map((i) => (
         <img
           key={i.id}
