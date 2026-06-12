@@ -50,15 +50,15 @@ const Rooms = () => {
         <p>{isSolved ? room.solvedInstruction : room.unsolvedInstruction}</p>
       </div>
       <div>
-        <div>
+        <div className="hintContainer">
           <button onClick={handleHint}>
             {hintIsVisible ? "Hide clue" : "Show clue"}
           </button>
           {hintIsVisible && <p>{room.hint} </p>}
-          {isSolved && room.itemToAdd === null && (
-            <button onClick={handleEscape}>Escape</button>
-          )}
         </div>
+        {isSolved && room.itemToAdd === null && (
+          <button onClick={handleEscape}>Escape</button>
+        )}
       </div>
       <Inventory onItemClick={handleClick} />
     </div>
