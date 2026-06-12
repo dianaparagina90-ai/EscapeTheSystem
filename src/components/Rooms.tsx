@@ -1,43 +1,62 @@
 import useInventory from "../hooks/useInventory";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { useState } from "react";
 import rooms from "../data/rooms.json";
+import Inventory from "./Inventory";
 
 const Rooms = () => {
-  const params = useParams();
-  const { inventory } = useInventory();
+  const { roomPath } = useParams();
+  const { inventory, checkIfCorrect } = useInventory();
   const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
 
-  let hint = false;
+  const [exitSolved, setExitSolved] = useState(false);
+
+  const hintIsVisible = searchParams.get("hint") === "true";
 
   const handleHint = () => {
-    if (hint) {
-      setSearchParams({
-        hint: "true",
-      });
-    }
-    console.log(searchParams);
+    setSearchParams({ hint: (!hintIsVisible).toString() });
   };
+  // console.log(searchParams);
 
-  const room = rooms.find((room) => room.roomPath === params.roomPath);
+  const room = rooms.find((room) => room.roomPath === roomPath);
   if (!room) {
     return;
   }
 
   const roomIsSolved = inventory.some((i) => i.id === room.itemToAdd);
 
+  const handleClick = (itemId: number) => {
+    const solved = checkIfCorrect(room, itemId);
+    if (solved && room.itemToAdd === null) {
+      setExitSolved(true);
+    }
+  };
+
+  const isSolved = room.itemToAdd === null ? exitSolved : roomIsSolved;
+
   return (
     <div>
       <h3>{room.roomName}</h3>
       <div>
         <img
-          src={roomIsSolved ? room.solvedImage : room.unsolvedImage}
-          alt={roomIsSolved ? room.solvedInstruction : room.unsolvedInstruction}
+          src={isSolved ? room.solvedImage : room.unsolvedImage}
+          alt={isSolved ? room.solvedInstruction : room.unsolvedInstruction}
         />
-        <p>
-          {roomIsSolved ? room.solvedInstruction : room.unsolvedInstruction}
-        </p>
+        <p>{isSolved ? room.solvedInstruction : room.unsolvedInstruction}</p>
       </div>
-      <button onClick={handleHint}>Tryck</button>
+      <div>
+        <div>
+          <button onClick={handleHint}>
+            {hintIsVisible ? "Hide clue" : "Show clue"}
+          </button>
+          {hintIsVisible && <p>{room.hint} </p>}
+          {isSolved && room.itemToAdd === null && (
+            <button onClick={() => navigate("/victory")}>Escape</button>
+          )}
+        </div>
+      </div>
+      <Inventory onItemClick={handleClick} />
     </div>
   );
 };

@@ -28,7 +28,6 @@ const App = () => {
               Home{" "}
             </Route>
           </Routes>
-          <Inventory />
         </InventoryProvider>
       </BrowserRouter>
     </>

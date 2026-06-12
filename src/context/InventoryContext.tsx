@@ -1,10 +1,12 @@
 import { createContext, useState, type PropsWithChildren } from "react";
 import items from "../data/items.json";
-import type { IItem } from "../types.ts";
+import rooms from "../data/rooms.json";
+import type { IItem, IRoom } from "../types.ts";
+import { useParams } from "react-router-dom";
 
 interface IInventoryContext {
   inventory: IItem[];
-  addItem: (id: number) => void;
+  checkIfCorrect: (room: IRoom, id: number) => boolean;
 }
 
 export const InventoryContext = createContext<IInventoryContext | null>(null);
@@ -15,6 +17,8 @@ const InventoryProvider = ({ children }: PropsWithChildren) => {
   const [inventory, setInventory] = useState<IItem[]>(
     startItem ? [startItem] : [],
   );
+
+  // let lastRoomSolved = false;
 
   //Kolla felhanteringen, efter inlagt exist stör map vidare i inventory när man trycker på föregående bild
   const addItem = (id: number) => {
@@ -28,8 +32,26 @@ const InventoryProvider = ({ children }: PropsWithChildren) => {
     });
   };
 
+  // const checkIfCorrect = (room: IRoom, id: number) => {
+  //   if (room.itemToSolve === id) {
+  //     if (typeof room.itemToAdd === "number") {
+  //       addItem(room.itemToAdd);
+  //     }
+  //     lastRoomSolved = true;
+  //   }
+  // };
+  const checkIfCorrect = (room: IRoom, id: number) => {
+    if (room.itemToSolve !== id) {
+      return false;
+    }
+    if (typeof room.itemToAdd === "number") {
+      addItem(room.itemToAdd);
+    }
+    return true;
+  };
+
   return (
-    <InventoryContext.Provider value={{ inventory, addItem }}>
+    <InventoryContext.Provider value={{ inventory, checkIfCorrect }}>
       {children}
     </InventoryContext.Provider>
   );
