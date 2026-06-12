@@ -1,0 +1,34 @@
+.app {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.inventory {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    
+}
+.inventory img {
+    width: 200px;
+    height: auto;
+}
+
+.navbar {
+    background-color: aqua;
+}
+.room {
+    max-width: 1000px;
+}
+.imageAndInstruction {
+    display: flex;
+    gap: 2rem;
+
+}
+
+.imageAndInstruction p {
+    font-size: 2rem;
+font-style: italic;
+}

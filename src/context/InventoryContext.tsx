@@ -1,8 +1,7 @@
 import { createContext, useState, type PropsWithChildren } from "react";
 import items from "../data/items.json";
-import rooms from "../data/rooms.json";
+
 import type { IItem, IRoom } from "../types.ts";
-import { useParams } from "react-router-dom";
 
 interface IInventoryContext {
   inventory: IItem[];
@@ -19,7 +18,6 @@ const InventoryProvider = ({ children }: PropsWithChildren) => {
     startItem ? [startItem] : [],
   );
 
-  //Kolla felhanteringen, efter inlagt exist stör map vidare i inventory när man trycker på föregående bild
   const addItem = (id: number) => {
     setInventory((prev) => {
       const newItem = items.find((i) => i.id === id);

@@ -1,7 +1,10 @@
-import useInventory from "../hooks/useInventory";
-
 const Victory = () => {
-  return <div>Victory</div>;
+  return (
+    <div className="victory">
+      <h2>Congratulations!! 🎉</h2>
+      <p>You made it out in time 🙏</p>
+    </div>
+  );
 };
 
 export default Victory;

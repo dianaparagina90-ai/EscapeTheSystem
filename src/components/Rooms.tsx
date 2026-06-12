@@ -17,7 +17,6 @@ const Rooms = () => {
   const handleHint = () => {
     setSearchParams({ hint: (!hintIsVisible).toString() });
   };
-  // console.log(searchParams);
 
   const room = rooms.find((room) => room.roomPath === roomPath);
   if (!room) {
@@ -41,9 +40,9 @@ const Rooms = () => {
   const isSolved = room.itemToAdd === null ? exitSolved : roomIsSolved;
 
   return (
-    <div>
+    <div className="room">
       <h3>{room.roomName}</h3>
-      <div>
+      <div className="imageAndInstruction">
         <img
           src={isSolved ? room.solvedImage : room.unsolvedImage}
           alt={isSolved ? room.solvedInstruction : room.unsolvedInstruction}

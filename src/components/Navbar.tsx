@@ -3,10 +3,9 @@ import rooms from "../data/rooms.json";
 
 const Navbar = () => {
   return (
-    <div>
+    <div className="navbar">
       <Link to="/">Home</Link>
-
-      <nav style={{ display: "flex", gap: "20px" }}>
+      <nav className="roomNavigation">
         {rooms.map((room) => (
           <Link key={room.id} to={room.roomPath}>
             {room.roomName}
