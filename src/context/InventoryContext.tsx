@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 interface IInventoryContext {
   inventory: IItem[];
   checkIfCorrect: (room: IRoom, id: number) => boolean;
+  resetInventory: () => void;
 }
 
 export const InventoryContext = createContext<IInventoryContext | null>(null);
@@ -17,8 +18,6 @@ const InventoryProvider = ({ children }: PropsWithChildren) => {
   const [inventory, setInventory] = useState<IItem[]>(
     startItem ? [startItem] : [],
   );
-
-  // let lastRoomSolved = false;
 
   //Kolla felhanteringen, efter inlagt exist stör map vidare i inventory när man trycker på föregående bild
   const addItem = (id: number) => {
@@ -32,14 +31,6 @@ const InventoryProvider = ({ children }: PropsWithChildren) => {
     });
   };
 
-  // const checkIfCorrect = (room: IRoom, id: number) => {
-  //   if (room.itemToSolve === id) {
-  //     if (typeof room.itemToAdd === "number") {
-  //       addItem(room.itemToAdd);
-  //     }
-  //     lastRoomSolved = true;
-  //   }
-  // };
   const checkIfCorrect = (room: IRoom, id: number) => {
     if (room.itemToSolve !== id) {
       return false;
@@ -50,8 +41,14 @@ const InventoryProvider = ({ children }: PropsWithChildren) => {
     return true;
   };
 
+  const resetInventory = () => {
+    setInventory(startItem ? [startItem] : []);
+  };
+
   return (
-    <InventoryContext.Provider value={{ inventory, checkIfCorrect }}>
+    <InventoryContext.Provider
+      value={{ inventory, checkIfCorrect, resetInventory }}
+    >
       {children}
     </InventoryContext.Provider>
   );

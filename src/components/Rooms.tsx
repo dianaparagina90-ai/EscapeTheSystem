@@ -6,7 +6,7 @@ import Inventory from "./Inventory";
 
 const Rooms = () => {
   const { roomPath } = useParams();
-  const { inventory, checkIfCorrect } = useInventory();
+  const { inventory, checkIfCorrect, resetInventory } = useInventory();
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
 
@@ -33,6 +33,11 @@ const Rooms = () => {
     }
   };
 
+  const handleEscape = () => {
+    resetInventory();
+    navigate("/victory");
+  };
+
   const isSolved = room.itemToAdd === null ? exitSolved : roomIsSolved;
 
   return (
@@ -52,7 +57,7 @@ const Rooms = () => {
           </button>
           {hintIsVisible && <p>{room.hint} </p>}
           {isSolved && room.itemToAdd === null && (
-            <button onClick={() => navigate("/victory")}>Escape</button>
+            <button onClick={handleEscape}>Escape</button>
           )}
         </div>
       </div>

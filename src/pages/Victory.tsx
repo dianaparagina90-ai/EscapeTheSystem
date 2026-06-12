@@ -1,7 +1,7 @@
-const Victory = () => {
-  return (
-    <div>Victory</div>
-  )
-}
+import useInventory from "../hooks/useInventory";
 
-export default Victory
+const Victory = () => {
+  return <div>Victory</div>;
+};
+
+export default Victory;
