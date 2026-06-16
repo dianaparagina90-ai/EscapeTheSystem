@@ -4,7 +4,7 @@ const Home = () => {
       <h1 className="text-7xl font-semibold font-mono p-2 text-center ">
         Escape the System
       </h1>
-      <p className="font-medium text-lg">
+      <p className="font-medium text-lg text-center">
         Du är instängd i en övergiven AI-forskningsanläggning, Project NEXUS
       </p>
       <p className="font-medium text-lg text-wrap p-2 text-center">

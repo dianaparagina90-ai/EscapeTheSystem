@@ -3,15 +3,15 @@ import "./App.css";
 import Home from "./pages/Home";
 import Rooms from "./components/Rooms";
 import Victory from "./pages/Victory";
-import Navbar from "./components/Navbar";
 import InventoryProvider from "./context/InventoryContext";
+import Header from "./components/Header";
 
 const App = () => {
   return (
     <div className="app">
       <BrowserRouter>
         <InventoryProvider>
-          <Navbar />
+          <Header />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/:roomPath" element={<Rooms />} />

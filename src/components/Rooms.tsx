@@ -40,13 +40,13 @@ const Rooms = () => {
   const isSolved = room.itemToAdd === null ? exitSolved : roomIsSolved;
 
   return (
-    <div className="flex flex-col gap-2 w-full p-2">
+    <div className="flex flex-col gap-4 w-full p-2">
       <h3 className="text-4xl font-bold font-mono text-indigo-900">
         {room.roomName}
       </h3>
       <div className="flex flex-col justify-center items-center gap-2">
         <img
-          className=" object-contain border-b-blue-950 border-b-2"
+          className=" object-contain border-b-blue-950 rounded-2xl"
           src={isSolved ? room.solvedImage : room.unsolvedImage}
           alt={isSolved ? room.solvedInstruction : room.unsolvedInstruction}
         />
@@ -71,7 +71,7 @@ const Rooms = () => {
             </button>
           )}
           {hintIsVisible && (
-            <p className="text-lg text-indigo-950 bg-indigo-200 rounded-2xl p-2 font-semibold font-mono text-center ml-20">
+            <p className="text-lg text-indigo-950 bg-indigo-200 rounded-2xl p-2 font-semibold font-mono text-center lg:ml-20 ">
               {room.hint}{" "}
             </p>
           )}
