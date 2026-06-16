@@ -1,6 +1,6 @@
 import useInventory from "../hooks/useInventory";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import rooms from "../data/rooms.json";
 import Inventory from "./Inventory";
 
@@ -19,9 +19,14 @@ const Rooms = () => {
   };
 
   const room = rooms.find((room) => room.roomPath === roomPath);
-  if (!room) {
-    return;
-  }
+
+  useEffect(() => {
+    if (!room) {
+      navigate("/");
+    }
+  }, [room, navigate]);
+
+  if (!room) return;
 
   const roomIsSolved = inventory.some((i) => i.id === room.itemToAdd);
 
@@ -55,7 +60,7 @@ const Rooms = () => {
         </p>
       </div>
       <div>
-        <div /*className="hintContainer"*/ className="flex gap-4">
+        <div className="flex gap-4">
           <button
             className="rounded-2xl border-4 border-double text-white bg-indigo-900 p-2 font-bold cursor-pointer hover:text-indigo-900 hover:bg-amber-50"
             onClick={handleHint}
@@ -83,10 +88,3 @@ const Rooms = () => {
 };
 
 export default Rooms;
-
-//Man trycker på ett rum - rummets path hamnar i URL
-// från location kan man hitta vilket rum man är i
-// när man trycker på bild så kollar man : bildens id === rummets item to solve id
-//Om det är samma - byt image + instruction
-//Då kollar man rummets itemToAdd - id
-//Kör addItem(id), hitta nytt item med det id:t,lägg till i inventory-array

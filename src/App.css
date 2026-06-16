@@ -19,29 +19,3 @@ body{
     align-items: center;
    
 }
-
-.inventory {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    
-}
-.inventory img {
-    width: 200px;
-    height: auto;
-}
-
-
-.room {
-    max-width: 1000px;
-}
-.imageAndInstruction {
-    display: flex;
-    gap: 2rem;
-
-}
-
-.imageAndInstruction p {
-    font-size: 2rem;
-font-style: italic;
-}

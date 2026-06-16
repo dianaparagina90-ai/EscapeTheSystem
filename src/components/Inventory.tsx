@@ -10,9 +10,7 @@ const Inventory = ({ onItemClick }: IProps) => {
   return (
     <>
       <h4 className="text-xl font-bold text-center font-mono">Inventory</h4>
-      <div
-        /*className="inventory"*/ className="flex gap-2 flex-wrap justify-center rounded-2xl"
-      >
+      <div className="flex gap-2 flex-wrap justify-center rounded-2xl">
         {inventory.map((i) => (
           <img
             className="w-auto h-30 rounded-2xl cursor-pointer  hover:scale-110  "

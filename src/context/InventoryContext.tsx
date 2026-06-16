@@ -20,12 +20,12 @@ const InventoryProvider = ({ children }: PropsWithChildren) => {
 
   const addItem = (id: number) => {
     setInventory((prev) => {
-      const newItem = items.find((i) => i.id === id);
-      if (!newItem || prev.some((i) => i.id === newItem.id)) {
+      const itemToAdd = items.find((i) => i.id === id);
+      if (!itemToAdd || prev.some((i) => i.id === itemToAdd.id)) {
         return prev;
       }
 
-      return [...prev, newItem];
+      return [...prev, itemToAdd];
     });
   };
 
