@@ -40,25 +40,42 @@ const Rooms = () => {
   const isSolved = room.itemToAdd === null ? exitSolved : roomIsSolved;
 
   return (
-    <div className="room">
-      <h3>{room.roomName}</h3>
-      <div className="imageAndInstruction">
+    <div className="flex flex-col gap-2 w-full p-2">
+      <h3 className="text-4xl font-bold font-mono text-indigo-900">
+        {room.roomName}
+      </h3>
+      <div className="flex flex-col justify-center items-center gap-2">
         <img
+          className=" object-contain border-b-blue-950 border-b-2"
           src={isSolved ? room.solvedImage : room.unsolvedImage}
           alt={isSolved ? room.solvedInstruction : room.unsolvedInstruction}
         />
-        <p>{isSolved ? room.solvedInstruction : room.unsolvedInstruction}</p>
+        <p className="items-center text-center p-2 font-semibold">
+          {isSolved ? room.solvedInstruction : room.unsolvedInstruction}
+        </p>
       </div>
       <div>
-        <div className="hintContainer">
-          <button onClick={handleHint}>
+        <div /*className="hintContainer"*/ className="flex gap-4">
+          <button
+            className="rounded-2xl border-4 border-double text-white bg-indigo-900 p-2 font-bold cursor-pointer hover:text-indigo-900 hover:bg-amber-50"
+            onClick={handleHint}
+          >
             {hintIsVisible ? "Hide clue" : "Show clue"}
           </button>
-          {hintIsVisible && <p>{room.hint} </p>}
+          {isSolved && room.itemToAdd === null && (
+            <button
+              className="rounded-2xl border-4 border-double text-white bg-green-700 p-2 font-bold cursor-pointer hover:text-green-700 hover:bg-emerald-50"
+              onClick={handleEscape}
+            >
+              Escape
+            </button>
+          )}
+          {hintIsVisible && (
+            <p className="text-lg text-indigo-950 bg-indigo-200 rounded-2xl p-2 font-semibold font-mono text-center ml-20">
+              {room.hint}{" "}
+            </p>
+          )}
         </div>
-        {isSolved && room.itemToAdd === null && (
-          <button onClick={handleEscape}>Escape</button>
-        )}
       </div>
       <Inventory onItemClick={handleClick} />
     </div>
